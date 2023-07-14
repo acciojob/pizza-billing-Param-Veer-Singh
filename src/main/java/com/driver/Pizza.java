@@ -19,10 +19,10 @@ public class Pizza {
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         if(isVeg){
-            price = 300;
+            price += 300;
             bill += "Base Price Of The Pizza: " + vegPizzaBasePrice + "\n";
         }else{
-            price = 400;
+            price += 400;
             bill += "Base Price Of The Pizza: " + nonVegPizzaBasePrice + "\n";
         }
         isCheeseAdded = false;
@@ -59,14 +59,18 @@ public class Pizza {
 
         if(isCheeseAdded){
             bill += "Extra Cheese Added: " + extraCheesePrice + "\n";
+            price += extraCheesePrice;
         }
         if(isToppingsAdded && isVeg){
             bill += "Extra Toppings Added: " + extraToppingsVegPrice + "\n";
+            price += extraToppingsVegPrice;
         }else if(isToppingsAdded && !isVeg){
             bill += "Extra Toppings Added: " + extraToppingsNonVegPrice + "\n";
+            price += extraToppingsNonVegPrice;
         }
         if(isTakeAway){
             bill += "Paperbag Added: " + PaperBagPrice + "\n";
+            price += PaperBagPrice;
         }
         bill += "Total price: " + getPrice() +"\n";
         return this.bill;
