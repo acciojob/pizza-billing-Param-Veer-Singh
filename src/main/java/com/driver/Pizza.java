@@ -20,10 +20,10 @@ public class Pizza {
         this.isVeg = isVeg;
         if(isVeg){
             price += 300;
-            bill += "Base Price Of The Pizza: " + vegPizzaBasePrice + "\n";
+            this.bill += "Base Price Of The Pizza: " + vegPizzaBasePrice + "\n";
         }else{
             price += 400;
-            bill += "Base Price Of The Pizza: " + nonVegPizzaBasePrice + "\n";
+            this.bill += "Base Price Of The Pizza: " + nonVegPizzaBasePrice + "\n";
         }
         isCheeseAdded = false;
         isToppingsAdded = false;
