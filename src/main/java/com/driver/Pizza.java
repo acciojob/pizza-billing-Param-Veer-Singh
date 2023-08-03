@@ -20,10 +20,8 @@ public class Pizza {
         this.isVeg = isVeg;
         if(isVeg){
             this.price += 300;
-            this.bill += "Base Price Of The Pizza: " + vegPizzaBasePrice + "\n";
         }else{
             this.price += 400;
-            this.bill += "Base Price Of The Pizza: " + nonVegPizzaBasePrice + "\n";
         }
         this.isCheeseAdded = false;
         this.isToppingsAdded = false;
@@ -38,6 +36,7 @@ public class Pizza {
     public void addExtraCheese(){
         if(this.isCheeseAdded)return;
         else{
+            this.price += 80;
             this.isCheeseAdded = true;
         }
     }
@@ -45,6 +44,11 @@ public class Pizza {
     public void addExtraToppings(){
         if(this.isToppingsAdded)return;
         else{
+            if(isVeg){
+                this.price += 70;
+            }else{
+                this.price += 120;
+            }
             this.isToppingsAdded = true;
         }
     }
@@ -52,26 +56,32 @@ public class Pizza {
     public void addTakeaway(){
         if(this.isTakeAway)return;
         else{
+            this.price += 20;
             this.isTakeAway = true;
         }
     }
 
     public String getBill(){
         if(isBillGenerated)return bill;
+        if(this.isVeg){
+            this.bill += "Base Price Of The Pizza: " + vegPizzaBasePrice + "\n";
+        }else{
+            this.bill += "Base Price Of The Pizza: " + nonVegPizzaBasePrice + "\n";
+        }
         if(this.isCheeseAdded){
             this.bill += "Extra Cheese Added: " + this.extraCheesePrice + "\n";
-            this.price += this.extraCheesePrice;
+//            this.price += this.extraCheesePrice;
         }
         if(this.isToppingsAdded && this.isVeg){
             this.bill += "Extra Toppings Added: " + this.extraToppingsVegPrice + "\n";
-            this.price += this.extraToppingsVegPrice;
+//            this.price += this.extraToppingsVegPrice;
         }else if(this.isToppingsAdded && !this.isVeg){
             this.bill += "Extra Toppings Added: " + this.extraToppingsNonVegPrice + "\n";
-            this.price += this.extraToppingsNonVegPrice;
+//            this.price += this.extraToppingsNonVegPrice;
         }
         if(this.isTakeAway){
             this.bill += "Paperbag Added: " + this.PaperBagPrice + "\n";
-            this.price += this.PaperBagPrice;
+//            this.price += this.PaperBagPrice;
         }
         this.bill += "Total Price: " + getPrice() +"\n";
         this.isBillGenerated = true;

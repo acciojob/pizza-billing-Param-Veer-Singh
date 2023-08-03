@@ -15,6 +15,7 @@ public class Main {
 
     Pizza p = new Pizza(true);
     p.addExtraCheese();
+    System.out.println(p.getPrice());
     p.addExtraToppings();
     p.addTakeaway();
     System.out.println(p.getBill());
